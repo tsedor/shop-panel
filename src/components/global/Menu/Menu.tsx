@@ -12,7 +12,6 @@ interface ILeftMenu {
 }
 
 const LeftMenu: React.FC<ILeftMenu> = (props) => {
-  console.log(props.location.pathname)
   const activeItem = menuItems.filter(item => item.path === props.location.pathname ? true : false).pop();
   const activeItemId = typeof activeItem === "object" && activeItem.id;
   return (
