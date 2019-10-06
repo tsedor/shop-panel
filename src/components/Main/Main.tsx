@@ -1,6 +1,7 @@
 import React from 'react';
 import { Breadcrumb, Layout } from 'antd';
-import { Route } from 'react-router';
+import { Redirect, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import { StyledLayout, StyledHeader, StyledIcon, StyledContent, StyledBreadcrumb, StyledFooter } from './Main.styled';
 import LeftMenu from '../global/Menu/Menu';
@@ -11,10 +12,13 @@ import Clients from '../Clients/Clients';
 import Orders from '../Orders/Orders';
 import Reviews from '../Reviews/Reviews';
 import Statistics from '../Statistics/Statistics';
+import { AppState } from '../../reducers';
 
 const Main: React.FC = () => {
+  const loggedIn = useSelector((state: AppState) => state.loginReducer.loggedIn)
   return (
     <StyledLayout>
+    {!loggedIn && <Redirect to="/login" />}
       <LeftMenu />
       <Layout>
         <StyledHeader>
