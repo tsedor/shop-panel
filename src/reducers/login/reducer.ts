@@ -4,7 +4,7 @@ import { ILoginActionTypes, CLEAN_ERROR, LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUC
 const initialState: ILoginState = {
   requested: false,
   error: '',
-  loggedIn: false,
+  loggedIn: true,
   token: '',
   refreshToken: ''
 }

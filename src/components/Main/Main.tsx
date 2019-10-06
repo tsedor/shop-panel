@@ -3,7 +3,7 @@ import { Breadcrumb, Layout } from 'antd';
 import { Redirect, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { StyledLayout, StyledHeader, StyledIcon, StyledContent, StyledBreadcrumb, StyledFooter } from './Main.styled';
+import { StyledLayout, StyledHeader, StyledIcon, StyledContent, StyledBreadcrumb, StyledFooter, StyledBadge } from './Main.styled';
 import LeftMenu from '../global/Menu/Menu';
 import Dashboard from '../Dashboard/Dashboard';
 import Categories from '../Categories/Categories';
@@ -23,7 +23,9 @@ const Main: React.FC = () => {
       <Layout>
         <StyledHeader>
           <StyledIcon type="setting" />
-          <StyledIcon type="bell" />
+          <StyledBadge count="5">
+            <StyledIcon type="bell" />
+          </StyledBadge>
           <StyledIcon type="logout" />
         </StyledHeader>
         <StyledContent>
