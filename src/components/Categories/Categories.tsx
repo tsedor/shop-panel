@@ -1,10 +1,12 @@
 import React from 'react';
 import { Button, Card, Divider, Icon, Table } from 'antd';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import { AppState } from '../../reducers';
 import { iCategory } from '../../reducers/categories/types';
+import AddCategoryModal from './AddCategoryModal';
+import { ToggleAddCategoryModal } from '../../reducers/ui/actions';
 
 const { Column } = Table;
 
@@ -18,10 +20,12 @@ const StyledCard = styled(Card)`
 
 const Categories: React.FC = () => {
   const categoriesList = useSelector((state: AppState) => state.categoriesReducer.categories)
+  const dispatch = useDispatch();
   return (
     <StyledCard title="Kategorie">
+      <AddCategoryModal />
       <ActionsContainer>
-        <Button type="primary" icon="plus">Dodaj kategorię</Button>
+        <Button type="primary" icon="plus" onClick={() => dispatch(ToggleAddCategoryModal())}>Dodaj kategorię</Button>
       </ActionsContainer>
       <Table rowKey="id" dataSource={categoriesList} size="small">
         <Column title="ID" dataIndex="id" key="id" sorter={(a: iCategory, b: iCategory) => a.id - b.id} />

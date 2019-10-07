@@ -1,5 +1,11 @@
 import { iCategory } from "./categories/types";
 
+export interface ICategoriesState {
+  requested: boolean,
+  error: string,
+  categories: Array<iCategory>
+}
+
 export interface ILoginState {
   requested: boolean,
   error: string,
@@ -8,8 +14,6 @@ export interface ILoginState {
   refreshToken: string
 }
 
-export interface ICategoriesState {
-  requested: boolean,
-  error: string,
-  categories: Array<iCategory>
+export interface IUIState {
+  showAddCategoryModal: boolean
 }
