@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Button, Card, Divider, Icon, message, Table } from 'antd';
+import { Button, Card, Divider, Icon, message, Popconfirm, Table } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
@@ -48,9 +48,13 @@ const Categories: React.FC = () => {
         <Column title="ID kategorii rodzica" dataIndex="parentId" key="parentId" />
         <Column title="Akcje" key="actions" render={(record: ICategory) => (
           <span>
-            <Icon type="edit" theme="twoTone" twoToneColor="#1890ff" onClick={() => console.log(record.id)} />
+            <Popconfirm title="skasować">
+              <Icon type="edit" theme="twoTone" twoToneColor="#1890ff" onClick={() => console.log(record.id)} />
+            </Popconfirm>
             <Divider type="vertical" />
-            <Icon type="delete" theme="twoTone" twoToneColor="#eb2f96" onClick={() => dispatch(deleteCategoryRequest(record.id))} />
+            <Popconfirm title="Czy na pewno chcesz skasować tą kategorię?" okText="Tak" cancelText="Nie" onConfirm={() => dispatch(deleteCategoryRequest(record.id))}>
+              <Icon type="delete" theme="twoTone" twoToneColor="#eb2f96" />
+            </Popconfirm>
           </span>
         )} />
       </Table>

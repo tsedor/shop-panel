@@ -26,7 +26,7 @@ export function* watchForDeleteCategory() {
 }
 
 function* removeCategory(action: any) {
-  const response = yield axios.delete(`http://localhost:3500/api/categories/id=${action.id}`, {headers: {header1: 'Bearer'}});
+  const response = yield axios.delete(`http://localhost:3500/api/categories/${action.id}`, {headers: {header1: 'Bearer'}});
   if (response.data.message === "ok") {
     yield put(deleteCategorySuccess(action.id))
   }
