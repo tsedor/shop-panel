@@ -1,9 +1,11 @@
-import { iCategory } from "./categories/types";
+import { ICategory } from "./categories/types";
 
 export interface ICategoriesState {
-  requested: boolean,
+  fetchRequested: boolean,
+  deleteRequested: boolean,
+  addRequested: boolean,
   error: string,
-  categories: Array<iCategory>
+  categories: Array<ICategory>
 }
 
 export interface ILoginState {

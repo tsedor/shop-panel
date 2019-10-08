@@ -1,4 +1,10 @@
-import { ILoginActionTypes, LOGIN_REQUEST, LOGIN_FAILURE, LOGIN_SUCCESS } from './types';
+import { ILoginActionTypes, LOGIN_REQUEST, LOGIN_FAILURE, LOGIN_SUCCESS, CLEAN_LOGIN_ERROR } from './types';
+
+export function cleanLoginError(): ILoginActionTypes {
+  return {
+    type: CLEAN_LOGIN_ERROR
+  }
+}
 
 export function loginRequest(login: string, password: string): ILoginActionTypes {
   return {

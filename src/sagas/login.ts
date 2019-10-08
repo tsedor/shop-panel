@@ -11,7 +11,7 @@ function* requestLogin(action: ILoginRequest) {
   try {
     const response = yield axios.post('http://localhost:3500/api/login', {login: action.login, password: action.password}, {headers: {header1: 'Bearer'}});
     if (response.data.message === 'ok') {
-      yield put(LoginSuccess(response.data.token, response.data.refreshToken))
+      yield put(LoginSuccess(response.data.token, response.data.refreshToken));
     } else {
       yield put(loginFailure(response.data.error));
     }

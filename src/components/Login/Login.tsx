@@ -1,11 +1,12 @@
-import React, { useRef } from 'react';
-import { Card, Form, Icon, Input } from 'antd';
+import React, { useEffect, useRef } from 'react';
+import { Card, Form, Icon, Input, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { LOGIN_REQUEST } from '../../reducers/login/types';
 import { LoginContainer, Logo, LogoSubtitle, StyledFormItem, StyledButton } from './Login.styled';
 import { Redirect } from 'react-router';
 import { AppState } from '../../reducers';
 import Password from 'antd/lib/input/Password';
+import { cleanLoginError } from '../../reducers/login/actions';
 
 const Login: React.FC = (props) => {
   const { form } = props as any;
@@ -21,6 +22,11 @@ const Login: React.FC = (props) => {
     }
   }
   const loggedIn = useSelector((state: AppState) => state.loginReducer.loggedIn);
+  const error = useSelector((state: AppState) => state.loginReducer.error);
+  const requested = useSelector((state: AppState) => state.loginReducer.requested);
+  useEffect(() => {
+    error !== "" && message.error(error, 3, () =>dispatch(cleanLoginError()))
+  });
 
   return (
     <LoginContainer>
@@ -42,7 +48,7 @@ const Login: React.FC = (props) => {
           )}
           </Form.Item>
           <StyledFormItem>
-            <StyledButton type="primary" htmlType="submit">Zaloguj się</StyledButton>
+            <StyledButton loading={requested} type="primary" htmlType="submit">Zaloguj się</StyledButton>
           </StyledFormItem>
         </Form>
       </Card>

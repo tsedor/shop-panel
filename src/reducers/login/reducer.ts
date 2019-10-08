@@ -1,10 +1,10 @@
 import { ILoginState } from "../types";
-import { ILoginActionTypes, CLEAN_ERROR, LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS } from "./types";
+import { ILoginActionTypes, CLEAN_LOGIN_ERROR, LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS } from "./types";
 
 const initialState: ILoginState = {
   requested: false,
   error: '',
-  loggedIn: true,
+  loggedIn: false,
   token: '',
   refreshToken: ''
 }
@@ -14,7 +14,7 @@ export function loginReducer(
   action: ILoginActionTypes
 ): ILoginState {
   switch (action.type) {
-    case CLEAN_ERROR: 
+    case CLEAN_LOGIN_ERROR: 
       return {
         ...state,
         error: ''
