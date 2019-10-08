@@ -1,10 +1,10 @@
-export const CLEAN_ERROR = 'CLEAN_ERROR';
+export const CLEAN_LOGIN_ERROR = 'CLEAN_LOGIN_ERROR';
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
-interface ICleanError {
-  type: typeof CLEAN_ERROR
+interface ICleanLoginError {
+  type: typeof CLEAN_LOGIN_ERROR
 }
 
 export interface ILoginRequest {
@@ -24,4 +24,4 @@ interface ILoginSuccess {
   refreshToken: string
 }
 
-export type ILoginActionTypes = ILoginRequest | ILoginFailure | ILoginSuccess | ICleanError;
+export type ILoginActionTypes = ILoginRequest | ILoginFailure | ILoginSuccess | ICleanLoginError;
